@@ -19,9 +19,9 @@
                             </a>
                         </div>
                         <div id="collapseOne" class="collapse" data-bs-parent="#accordion">
-                                <a href="#" class="nav_link  pl-3">
+                                <a href="gestionar.php" class="nav_link  pl-3">
                                     <i class='bx bx-folder nav_icon'></i>
-                                    <span class="nav_name"> Por radicar </span>
+                                    <span class="nav_name"> Por gestionar </span>
                                 </a>
                                 <a href="#" class="nav_link">
                                     <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
