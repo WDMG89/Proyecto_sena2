@@ -215,9 +215,9 @@
                             </div>
                          
                             <div class="col-sm-4">
-                                <button type="button" class="w-100 btn btn-danger btn-lg" data-bs-toggle="modal"
+                                <button type="button" class="w-100 btn btn-warning btn-lg" data-bs-toggle="modal"
                                 data-bs-target="#staticBackdrop3">
-                                pendientes
+                                Pendientes
                                 </button>
                             </div>
                             <!-- Modal -->
