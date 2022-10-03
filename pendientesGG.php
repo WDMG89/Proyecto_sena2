@@ -116,18 +116,15 @@
                 </form>
             </div>
         </div>
-<hr>
-                <?php
-                    include('Boton_accion_autorizar.php');
-                ?>                
-                <!-- boton autorizar 
+<hr>              
+                <!-- boton autorizar -->
                 <div class="row g-">
                     <button type="button" class="w-100 btn btn-success btn-lg" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop">
                         Autorizar solicitud
                     </button>
-                
-                    <!-- Modal 
+                </div>
+                    <!-- Modal -->
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -140,7 +137,7 @@
                                     </a>
                                 </div>
                                 <div class="modal-body">
-                                    La solicitud se ha negado exitosamente
+                                    La solicitud se ha autorizado exitosamente
                                 </div>
                                 <div class="modal-footer">
                                     <a href="pendientesG.php">
@@ -151,21 +148,16 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- boton negar -->
                 <br>
-                <?php
-                    include('Boton_accion_negar.php');
-                ?>
-            <!--
+            <!-- boton negar -->
                 <div class="row g-">
                     <button type="button" class="w-100 btn btn-danger btn-lg" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop">
+                        data-bs-target="#staticBackdrop6">
                         Negar solicitud
                     </button>
-                
-                    <!-- Modal 
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop6" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -188,8 +180,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            -->
+
 </div>     
 <hr>
 

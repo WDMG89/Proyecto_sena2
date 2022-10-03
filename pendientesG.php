@@ -36,7 +36,7 @@
                         
                             <td>
                                 <a href="pendientesGG.php">
-                                    <button type="button" class="btn btn-warning">Gestionar</button>
+                                    <button type="button" class="btn btn-secondary">Gestionar</button>
                                 </a>
                             </td>
                     </tr>
@@ -47,7 +47,7 @@
                         <td>15/03/2022</td>
                         <td>Aprobado</td>
                         <td>
-                            <button type="button" class="btn btn btn-warning">Gestionar</button>
+                            <button type="button" class="btn btn btn-secondary">Gestionar</button>
                         </td>
                     </tr>   
                     <tr>
@@ -57,7 +57,7 @@
                         <td>28/06/2022</td>
                         <td>Aprobado</td>
                         <td>
-                            <button type="button" class="btn btn btn-warning">Gestionar</button>
+                            <button type="button" class="btn btn btn-secondary">Gestionar</button>
                         </td>
                     </tr>
                 </tbody>

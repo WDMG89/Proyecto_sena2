@@ -56,7 +56,8 @@
                         <span class="nav_name"> Parametrización </span>
                     </a>
                 </div>
-            </div> <a href="index.php" class="nav_link active"> <i class='bx bx-log-out nav_icon'></i> <span
+                <a href="index.php" class="nav_link active"> <i class='bx bx-log-out nav_icon'></i> <span
                     class="nav_name">SignOut</span> </a>
+            </div>
         </nav>
     </div>
