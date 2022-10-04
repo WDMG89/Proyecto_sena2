@@ -2,7 +2,7 @@
     include('menu_superior.php');
     include('menu_lateral.php');
 ?>
-
+<br><br><br>
 <div class="height-100 bg-light container">
         <div class="row">
             <h2>Solicitudes</h2>
