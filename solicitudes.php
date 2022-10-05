@@ -1,6 +1,7 @@
 <?php
-    include('menu_superior.php');
-    include('menu_lateral.php');
+    require_once('menu_superior.php');
+    require_once('menu_lateral.php');
+    require_once('conexiondb.php')
 ?>
 <br><br><br>
 <div class="height-100 bg-light container">
