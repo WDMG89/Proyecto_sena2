@@ -79,12 +79,7 @@
                                         max="18:00" required disabled>
                                 </div>
 
-                                <div class="col-sm-3">
-                                    <label for="country" class="form-label">Valor Importe Permiso</label>
-                                    <input type="number" class="form-control" id="appt" name="appt" min="09:00"
-                                        max="18:00" required disabled>
-                                </div>
-
+                                
                                 <div>
                                     <!--class="col-md-6"-->
                                     <label for="country" class="form-label">Motivo</label>
@@ -135,13 +130,7 @@
 
                 <h6 class="my-4">
                     <div class="row g-6">
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required
-                                disabled>
-                            <label for="firstName" class="form-label">Area Administrativa </label>
-                        </div>
-
-
+                     
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="firstName" placeholder="JuanMV" required
                                 disabled>
@@ -155,7 +144,7 @@
                             <label for="firstName" class="form-label">Empleado </label>
                         </div>
                     </div>
-                    
+                     
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-4">
