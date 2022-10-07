@@ -63,6 +63,9 @@
             <img src="public/img/s.png" class="#">
         </div>
         <div class="col p-0 bg-custom d-flex justify-content-center align-items-center flex-column w-100">
+            <div>
+                <h1>SGA</h1>
+            </div>
         <img src="public/img/logo.png" class="#">
         <br>
         <br>
