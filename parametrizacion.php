@@ -1,8 +1,9 @@
+<br><br><br>
 <?php
     require_once('menu_superior.php');
     require_once('menu_lateral.php');
-?>
 
+?>
 <!-- leyenda inicio-->
     <div class="height-100 bg-light container">
         <div class="row">
@@ -21,9 +22,9 @@
                     <option value="3"> COMERCIAL </option>
                     <option value="4"> OPERACIONES </option>
                     <option value="5"> TESORERIA </option>
-                    <option value="5"> CONTABILIDAD </option>
-                    <option value="5"> SISTEMAS </option>
-                    <option value="5"> CARTERA </option>
+                    <option value="6"> CONTABILIDAD </option>
+                    <option value="7"> SISTEMAS </option>
+                    <option value="8"> CARTERA </option>
                 </select>
             </div>
         <div class="p-2 bd-highlight">
@@ -54,7 +55,7 @@
                         <th scope="col"> Usuario </th>                        
                         <th scope="col"> Area </th>
                         <th scope="col"> Cargo </th>
-                        <th scope="col"> Parfil </th>
+                        <th scope="col"> Perfil </th>
                         <th scope="col"> Grabar </th>
                     </tr>
                 </thead>
