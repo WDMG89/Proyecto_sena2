@@ -61,11 +61,41 @@
                             <textarea class="form-control" rows="2" id="observaciones" name="observaciones" spellcheck="true" ></textarea>
                         </div>
                     <br>
-                    <div class="mb-6">
-                        <button  class="w-100 btn btn-success btn-lg" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdropenviarsolicitud" type="submit">
-                            Enviar solicitud
-                        </button>
+                    <br>
+
+                    < <!-- boton enviar -->
+                    <br>
+                    <br>
+                    <br>
+                <div class="row g-">
+                    <button type="button" class="w-100 btn btn-success btn-lg" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop6">
+                        Enviar solicitud
+                    </button>
+                </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop6" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel"><b>Envio exitoso</b></h5>
+                                    <a href="solicitudes.php">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                    </a>
+                                </div>
+                                <div class="modal-body">
+                                    La solicitud se ha enviado exitosamente
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="solicitudes.php">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cerrar</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <br>
@@ -81,28 +111,7 @@
         </div>
     </div>  
 </div>
-<!-- Modal Boton-->
-                    <div class="modal fade" id="staticBackdropenviarsolicitud" data-bs-backdrop="static" data-bs-keyboard="false"
-                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel"><b>Envio exitoso</b></h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Su solicitud se ha enviado exitosamente
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="solicitudes.php">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Cerrar</button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
 <!-- Modal terminos y condiciones -->
                     <div class="modal fade" id="staticBackdropterminos" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -127,5 +136,5 @@
                             </div>
                         </div>
                     </div>
-
+<br>
 <?php require_once('piedepagina.php') ?>
