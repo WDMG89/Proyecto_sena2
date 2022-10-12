@@ -1,10 +1,55 @@
+<br><br><br>
 <?php
     require_once('menu_superior.php');
     require_once('menu_lateral.php');
 
-    
+    if (empty($_GET['id'])) {
+    } else {
+                $id = $_GET['id'];
+
+                $servername = "localhost";
+                $username   = "root";
+                $password   = "";
+                $dbname     = "solicitudausencias";
+
+                    try {
+                        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                        // set the PDO error mode to exception
+                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                        $stmt = $conn->prepare("SELECT empleado.nombre AS nombre_empleado, area.nombre AS nombre_area, cargo.nombre AS nombre_cargo, solicitud.fecha_inicio, solicitud.fecha_final, solicitud.numero_horas, cargo.salario, motivo_solicitud.nombre AS nombre_motivo, solicitud.observaciones FROM ((((solicitud 
+                            INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) 
+                            INNER JOIN empleado ON solicitud.id_empleado = empleado.id)
+                            INNER JOIN cargo ON empleado.id_cargo = cargo.id)
+                            INNER JOIN area ON cargo.id_area = area.id) WHERE solicitud.id= $id");
+                        $stmt->execute();
+
+                        $row = $stmt->fetch(PDO::FETCH_OBJ);
+                        
+ 
+
+                        
 
 
+                        
+                        
+
+
+                } catch(PDOException $e) {
+                    echo "Conexion fallida: " . $e->getMessage();
+                }
+                
+                $conn = null;
+
+            }
+
+                        $numero_horas = $row->numero_horas;
+                        $salariomes = $row->salario;
+                        $salariodia = $salariomes / 30;
+                        $salariohora = $salariodia / 8;
+
+
+                        $importe = $salariohora * $numero_horas;
 
 ?>
 
@@ -23,7 +68,7 @@
                     <div class="row g-3">
                         <div class="col-sm-12">
                             <label for="nombre" class="form-label">Nombre </label>
-                            <input type="text" class="form-control" id="nombre" placeholder="Mauricio"
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="<?=$row->nombre_empleado?>"
                                 required disabled>
                             <div class="invalid-feedback">
                                 Valid first name is required.
@@ -33,30 +78,30 @@
 <hr>
                         <div class="col-12">
                             <label for="area" class="form-label">Area o Dependencia</label>
-                            <input type="text" class="form-control" id="area" placeholder="Comercial" required
+                            <input type="text" class="form-control" id="area" name="area" placeholder="Area o Dependencia" value="<?=$row->nombre_area?>" required
                                 disabled>
                         </div>
 
                         <div class="col-12">
                             <label for="cargo" class="form-label">Cargo</label>
-                            <div class="input-group has-validation">
-                                <input type="text" class="form-control" id="cargo" placeholder="Analista de informacion"
+                            <!--div class="input-group has-validation"-->
+                                <input type="text" class="form-control" id="cargo" name="cargo" placeholder="Cargo" value="<?=$row->nombre_cargo?>"
                                     required disabled>
-                            </div>
+                            <!--div-->
                         </div>
 <hr>
                     <div class="col-sm-6">
                         <label for="fecha_inicio" class="form-label">Fecha y Hora de salida</label>
-                        <input id="fecha_inicio" class="form-control" type="datetime-local" name="fecha_inicio" required disabled/>
+                        <input id="fecha_inicio" class="form-control" type="datetime-local" name="fecha_inicio" value="<?=$row->fecha_inicio?>" required disabled/>
                     </div>
                     <div class="col-sm-6">
                         <label for="fecha_final" class="form-label">Fecha y Hora de Regreso</label>
-                        <input id="fecha_final" class="form-control" type="datetime-local" name="fecha_final" required disabled/>
+                        <input id="fecha_final" class="form-control" type="datetime-local" name="fecha_final" value="<?=$row->fecha_final?>" required disabled/>
                     </div>
 
                         <div class="col-sm-3">
                             <label for="importe" class="form-label">Valor Importe Permiso</label>
-                            <input type="number" class="form-control" id="importe" name="importe" min="09:00" max="18:00"
+                            <input type="number" class="form-control" id="importe" name="importe"  value="<?=$importe?>"
                                 required disabled>
                         </div>
 
@@ -80,7 +125,7 @@
                         <div class="col-md-12">
                             <label for="observaciones" class="form-label">Observaciones <span
                                     class="text-muted">(Opcional)</span></label>
-                            <textarea class="form-control" rows="2" id="observaciones" name="text" placeholder="Importante cita con especialista para revisión de examenes y asignación de operación"
+                            <textarea class="form-control" rows="2" id="observaciones" name="observaciones" placeholder="<?=$row->observaciones?>"
                                 required disabled></textarea>
                         </div>
                 </form>

@@ -60,11 +60,9 @@
                             <td><?=$row->fecha_inicio?></td>
                             <td><?=$row->nombre?></td>
                             
-                                <td>
-                                    <a href="pendientesGG.php">
-                                        <button type="button" class="btn btn-secondary">Gestionar</button>
-                                    </a>
-                                </td>
+                            <td>
+                                <a href="pendientesGG.php?id=<?=$row->id?>" class="btn btn-secondary">Gestionar</a>
+                            </td>
                         </tr>
                     <?php   
                         }
