@@ -1,7 +1,31 @@
+<br><br><br>
 <?php
     require_once('menu_superior.php');
     require_once('menu_lateral.php');
-    require_once('conexiondb.php')
+    
+
+    $servername = "localhost";
+    $username   = "root";
+    $password   = "";
+    $dbname     = "solicitudausencias";
+
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        // set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo "connected successfully";
+
+
+        $stmt = $conn->prepare("SELECT id, id_motivo, fecha_inicio, id_estado FROM solicitud");
+        $stmt->execute();
+
+        $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
+        
+
+    } catch(PDOException $e) {
+        echo "Conexion fallida: " . $e->getMessage();
+    }
+
 ?>
 <br><br><br>
 <div class="height-100 bg-light container">
@@ -30,6 +54,7 @@
             </div>
         </div>
 
+
         <div class="row">
             <table class="table table-striped table-hover">
                 <thead>
@@ -43,40 +68,30 @@
                     </tr>
                 </thead>
                 <tbody>
+
+
+                <?php
+                    foreach ($rows as $row) {
+                
+                ?>
+
                     <tr>
                         <th scope="row">1</th>
-                        <td>0001</td>
-                        <td>Salud</td>
-                        <td>06/08/2021</td>
-                        <td>Radicado</td>
+                        <td><?=$row->id?></td>
+                        <td><?=$row->id_motivo?></td>
+                        <td><?=$row->fecha_inicio?></td>
+                        <td><?=$row->id_estado?></td>
                         
                             <td>
                                 <a href="verdoc.php">
                                     <button type="button" class="btn btn-secondary">Ver</button>
                                 </a>
                             </td>
-
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>0002</td>
-                        <td>Calamidad</td>
-                        <td>15/03/2022</td>
-                        <td>Autorizado</td>
-                        <td>
-                            <button type="button" class="btn btn-secondary">Ver</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>0003</td>
-                        <td>Otro</td>
-                        <td>28/06/2022</td>
-                        <td>En proceso</td>
-                        <td>
-                            <button type="button" class="btn btn-secondary">Ver</button>
-                        </td>
-                    </tr>
+                <?php
+                    }
+                ?>
+                        
                 </tbody>
             </table>
         </div>
