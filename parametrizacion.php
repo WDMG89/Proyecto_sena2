@@ -50,7 +50,6 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col"> Nombre </th>
                         <th scope="col"> Usuario </th>                        
                         <th scope="col"> Area </th>
@@ -61,7 +60,6 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">1</th>
                         <td> William Daniel Meneses Garcia </td>
                         <td> WDMENESES </td>
                         <td> Operaciones </td>
@@ -113,7 +111,7 @@
         </div>
     </div>
 
-
+<hr>
 <?php 
     include('piedepagina.php');
 ?>

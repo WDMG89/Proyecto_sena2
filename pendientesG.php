@@ -25,6 +25,7 @@
         echo "Conexion fallida: " . $e->getMessage();
     }
 
+    
 
 ?>
 
@@ -73,7 +74,9 @@
         </div>
     </div>
 
+<hr>
+<?php
 
-<?php 
+    $conn = null;
     include('piedepagina.php');
 ?>
