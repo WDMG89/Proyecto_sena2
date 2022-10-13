@@ -102,7 +102,7 @@
                 </div>    
             </form>
             <div>
-                <h6 class="my-4">Al precionar enviar solictud
+                <h6 class="my-4">Al presionar enviar solictud
                     <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdropterminos">
                         <hx4 type="text" class="form-check-label">*Acepto terminos y condiciones.</hx4>
                     </a>
