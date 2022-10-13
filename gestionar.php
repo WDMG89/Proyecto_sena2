@@ -1,6 +1,30 @@
 <?php
     require_once('menu_superior.php');
     require_once('menu_lateral.php');
+    require_once('conexiondb.php');
+    $servername = "localhost";
+    $username   = "root";
+    $password   = "";
+    $dbname     = "solicitudausencias";
+
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        // set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+        $stmt = $conn->prepare("SELECT solicitud.id, motivo_solicitud.nombre AS nombre_motivo, solicitud.fecha_inicio, estado.nombre FROM ((solicitud INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) INNER JOIN estado ON solicitud.id_estado = estado.id)");
+        $stmt->execute();
+
+        $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+
+    } catch(PDOException $e) {
+        echo "Conexion fallida: " . $e->getMessage();
+    }
+
+    
+
 ?>
 
     <!-- leyenda inicio-->
@@ -27,44 +51,41 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>0001</td>
-                        <td>Salud</td>
-                        <td>06/08/2021</td>
-                        <td>radicado</td>
 
-                        <td>
+                <?php
+                    foreach ($rows as $row) {
+                
+                ?>
+
+
+                    <tr>
+                    <td><?=$row->id?></td>
+                            <td><?=$row->nombre_motivo?></td>
+                            <td><?=$row->fecha_inicio?></td>
+                            <td><?=$row->nombre?></td>
+                            <td>
                             <a href="radicar.php">
                                 <button type="button" class="btn btn-secondary">Gestionar</button>
                             </a>
                         </td>
 
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>0002</td>
-                        <td>Calamidad</td>
-                        <td>15/03/2022</td>
-                        <td>radicado</td>
-                        <td>
-                            <button type="button" class="btn btn-secondary">Gestionar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>0003</td>
-                        <td>Otro</td>
-                        <td>28/06/2022</td>
-                        <td>radicado</td>
-                        <td>
-                            <button type="button" class="btn btn-secondary">Gestionar</button>
-                        </td>
-                    </tr>
+                        
+                        <?php   
+                        }
+                    ?>
+
+
                 </tbody>
             </table>
         </div>
 
     </div>
+    <hr>
+<?php
+
+    $conn = null;
+    include('piedepagina.php');
+?>
 
     <!--Container Main end-->
