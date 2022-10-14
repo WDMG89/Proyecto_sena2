@@ -78,5 +78,5 @@
 <?php
 
     $conn = null;
-    include('piedepagina.php');
+    require_once('piedepagina.php');
 ?>

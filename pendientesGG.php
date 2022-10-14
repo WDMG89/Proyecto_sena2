@@ -2,20 +2,11 @@
 <?php
 require_once('menu_superior.php');
 require_once('menu_lateral.php');
+require_once('conexiondb.php');
 
 if (empty($_GET['id'])) {
 } else {
     $id = $_GET['id'];
-
-    $servername = "localhost";
-    $username   = "root";
-    $password   = "";
-    $dbname     = "solicitudausencias";
-
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $conn->prepare("SELECT empleado.nombre AS nombre_empleado, area.nombre AS nombre_area, cargo.nombre AS nombre_cargo, solicitud.fecha_inicio, solicitud.fecha_final, solicitud.numero_horas, cargo.salario, motivo_solicitud.nombre AS nombre_motivo, solicitud.observaciones FROM ((((solicitud 
                             INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) 
@@ -25,11 +16,7 @@ if (empty($_GET['id'])) {
         $stmt->execute();
 
         $row = $stmt->fetch(PDO::FETCH_OBJ);
-    } catch (PDOException $e) {
-        echo "Conexion fallida: " . $e->getMessage();
-    }
-
-    $conn = null;
+    
 }
 
 $numero_horas = $row->numero_horas;
@@ -110,72 +97,73 @@ $importe = $salariohora * $numero_horas;
                     <div class="col-md-12">
                         <label for="observaciones" class="form-label">Observaciones <span class="text-muted">(Opcional)</span></label>
                         <textarea class="form-control" rows="2" id="observaciones" name="observaciones"><?= $row->observaciones ?></textarea>
-                    </div>   
+                    </div>
             </form>
         </div>
     </div>
 </div>
 <hr>
 <!-- boton autorizar -->
-                    <div class="row g-">
-                        <button type="button" class="w-100 btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Autorizar solicitud
-                        </button>
-                    </div>
+<div class="row g-">
+    <button type="button" class="w-100 btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Autorizar solicitud
+    </button>
+</div>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel"><b>Envio exitoso</b></h5>
-                                    <a href="pendientesG.php">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </a>
-                                </div>
-                                <div class="modal-body">
-                                    La solicitud se ha autorizado exitosamente
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="pendientesG.php">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<!-- Modal autorizar -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel"><b>Envio exitoso</b></h5>
+                <a href="pendientesG.php">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </a>
+            </div>
+            <div class="modal-body">
+                La solicitud se ha autorizado exitosamente
+            </div>
+            <div class="modal-footer">
+                <a href="pendientesG.php">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 <br>
 
 <!-- boton negar -->
-                    <div class="row g-">
-                        <button type="button" class="w-100 btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop6">
-                            Negar solicitud
-                        </button>
-                    </div>
-                    <!-- Modal -->
-                    <div class="modal fade" id="staticBackdrop6" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel"><b>Envio exitoso</b></h5>
-                                    <a href="pendientesG.php">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </a>
-                                </div>
-                                <div class="modal-body">
-                                    La solicitud se ha negado exitosamente
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="pendientesG.php">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>    
+<div class="row g-">
+    <button type="button" class="w-100 btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop6">
+        Negar solicitud
+    </button>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop6" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel"><b>Envio exitoso</b></h5>
+                <a href="pendientesG.php">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </a>
+            </div>
+            <div class="modal-body">
+                La solicitud se ha negado exitosamente
+            </div>
+            <div class="modal-footer">
+                <a href="pendientesG.php">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 <hr>
 
 <?php
-include('piedepagina.php');
+$conn = null;
+require_once('piedepagina.php');
 ?>

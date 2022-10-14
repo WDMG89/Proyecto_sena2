@@ -63,24 +63,22 @@
             <div>
                 <h1>SGA</h1>
             </div>
-        <img src="public/img/logo.png" class="#">
-        <br>
-        <br>
-            <form class="w-75" action="#">
+            <img src="public/img/logo.png" class="#">
+            <br>
+            <br>
+            <form class="w-75" action="validar.php" method="post">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Usuario</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="usuario"
-                        required>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="usuario" placeholder="usuario" required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput2" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="contraseña"
-                        required>
+                    <input type="password" class="form-control" id="exampleFormControlInput2" name="contrasena" placeholder="contraseña" required>
                 </div>
                 <!-- TODO: quitar etiqueta <a> y dejar solo boton -->
-                <a href="Inicio.php">
-                    <button type="button" class="btn btn-custom btn-lg btn-block mt-3">Ingresar</button>
-                </a>
+
+                <button type="submit" class="btn btn-custom btn-lg btn-block mt-3">Ingresar</button>
+
                 <div class="d-flex justify-content-center mt-1">
                     <label for="exampleFormControlInput1" class="form-label">Version 1.0</label>
                 </div>
@@ -89,10 +87,11 @@
         </div>
     </div>
 </body>
+
 </html>
 
 <br>
 <br>
-<?php 
-    include('piedepagina.php');
+<?php
+include('piedepagina.php');
 ?>

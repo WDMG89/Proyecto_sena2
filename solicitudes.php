@@ -2,29 +2,18 @@
 <?php
     require_once('menu_superior.php');
     require_once('menu_lateral.php');
-    
-
-    $servername = "localhost";
-    $username   = "root";
-    $password   = "";
-    $dbname     = "solicitudausencias";
-
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "connected successfully";
+    require_once('conexiondb.php');
 
 
-        $stmt = $conn->prepare("SELECT id, id_motivo, fecha_inicio, id_estado FROM solicitud");
+        $stmt = $conn->prepare("SELECT solicitud.id, motivo_solicitud.nombre AS nombre_motivo, solicitud.fecha_inicio, estado.nombre AS nombre_estado FROM ((solicitud 
+        INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) 
+        INNER JOIN estado ON solicitud.id_estado = estado.id)");
         $stmt->execute();
 
         $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
         
 
-    } catch(PDOException $e) {
-        echo "Conexion fallida: " . $e->getMessage();
-    }
+    
 
 ?>
 <br><br><br>
@@ -59,7 +48,6 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">No. Solicitud</th>
                         <th scope="col">Motivo</th>
                         <th scope="col">Fecha Solicitud</th>
@@ -76,11 +64,10 @@
                 ?>
 
                     <tr>
-                        <th scope="row">1</th>
                         <td><?=$row->id?></td>
-                        <td><?=$row->id_motivo?></td>
+                        <td><?=$row->nombre_motivo?></td>
                         <td><?=$row->fecha_inicio?></td>
-                        <td><?=$row->id_estado?></td>
+                        <td><?=$row->nombre_estado?></td>
                         
                             <td>
                                 <a href="verdoc.php">
@@ -98,6 +85,7 @@
     </div>
 
 
-<?php 
+<?php
+    $conn = null;
     include('piedepagina.php');
 ?>

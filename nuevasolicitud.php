@@ -1,6 +1,31 @@
 <?php
     require_once('menu_superior.php');
     require_once('menu_lateral.php');
+    require_once('conexiondb.php');
+
+if (empty($_GET['id'])) {
+} else {
+$id = $_GET['id'];
+
+    
+    
+    $stmt = $conn->prepare("SELECT empleado.nombre AS nombre_empleado, area.nombre AS nombre_area, cargo.nombre AS nombre_cargo, motivo_solicitud.nombre AS nombre_motivo, solicitud.observaciones FROM ((((solicitud 
+                            INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) 
+                            INNER JOIN empleado ON solicitud.id_empleado = empleado.id)
+                            INNER JOIN cargo ON empleado.id_cargo = cargo.id)
+                            INNER JOIN area ON cargo.id_area = area.id) WHERE solicitud.id= $id");
+    $stmt->execute();
+
+    $row = $stmt->fetch(PDO::FETCH_OBJ);
+}
+
+
+
+
+
+
+
+
 ?>
 
 <br><br><br>
@@ -14,7 +39,7 @@
                 <div class="row g-3">
                     <div class="col-sm-12">
                         <label for="nombre" class="form-label">Nombre </label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" value="Mauricio"
+                        <input type="text" class="form-control" id="nombre" name="nombre" value="<?=$row->nombre_empleado?>"
                             readonly="readonly">
                     </div>
                     <div class="col-6">
