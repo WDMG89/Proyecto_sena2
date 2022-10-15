@@ -1,31 +1,10 @@
+
+<br><br><br>
+
 <?php
     require_once('menu_superior.php');
     require_once('menu_lateral.php');
-    require_once('conexiondb.php');
-
-if (empty($_GET['id'])) {
-} else {
-$id = $_GET['id'];
-
-    
-    
-    $stmt = $conn->prepare("SELECT empleado.nombre AS nombre_empleado, area.nombre AS nombre_area, cargo.nombre AS nombre_cargo, motivo_solicitud.nombre AS nombre_motivo, solicitud.observaciones FROM ((((solicitud 
-                            INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) 
-                            INNER JOIN empleado ON solicitud.id_empleado = empleado.id)
-                            INNER JOIN cargo ON empleado.id_cargo = cargo.id)
-                            INNER JOIN area ON cargo.id_area = area.id) WHERE solicitud.id= $id");
-    $stmt->execute();
-
-    $row = $stmt->fetch(PDO::FETCH_OBJ);
-}
-
-
-
-
-
-
-
-
+        
 ?>
 
 <br><br><br>
@@ -35,41 +14,45 @@ $id = $_GET['id'];
         <div>
             <h4 class="mb-3">Solicitud</h4>
             <hr>
-            <form action="#" method="#" class="needs-validation" novalidate>
-                <div class="row g-3">
+            <form action="crear_solicitud.php" method="post" class="needs-validation" novalidate>
+                            <div class="row g-3">
                     <div class="col-sm-12">
                         <label for="nombre" class="form-label">Nombre </label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" value="<?=$row->nombre_empleado?>"
+                        <input type="text" class="form-control" id="nombre" name="nombre"
                             readonly="readonly">
                     </div>
                     <div class="col-6">
                         <label for="cargo" class="form-label">Cargo</label>
                             <div class="input-group has-validation">
-                                <input type="text" class="form-control" id="cargo" name="cargo" value="Analista Información"
+                                <input type="text" class="form-control" id="cargo" name="cargo" 
                                     readonly="readonly">
                             </div>
                     </div>
                     <div class="col-6">
                         <label for="area" class="form-label">Area o Dependencia</label>
-                        <input type="text" class="form-control" id="area" name="area" value="Sistemas"  readonly="readonly">
+                        <input type="text" class="form-control" id="area" name="area"  readonly="readonly">
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <label for="fecha_inicio" class="form-label">Fecha y Hora de salida</label>
                         <input id="fecha_inicio" class="form-control" type="datetime-local" name="fecha_inicio" required/>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <label for="fecha_final" class="form-label">Fecha y Hora de Regreso</label>
                         <input id="fecha_final" class="form-control" type="datetime-local" name="fecha_final" required/>
+                    </div>
+
+                    <div class="col-4">
+                        <label for="area" class="form-label">Numero de horas</label>
+                        <input type="text" class="form-control" id="area" name="numero_horas" required>
                     </div>
 
                     <div class="col-md-6">
                         <label for="motivo_solicitud" class="form-label">Motivo</label>
                         <select class="form-select" name="motivo_solicitud" id="motivo_solicitud" required>
-                            <option value="">Seleccionar...</option>
-                            <option>Salud</option>
-                            <option>Particular</option>
-                            <option>Calamidad</option>
-                            <option>Otros</option>
+                            <option value="1">Salud</option>
+                            <option value="2">Particular</option>
+                            <option value="3">Calamidad</option>
+                            <option value="4">Otros</option>
                         </select>
                     </div>
                     <div class="col-md-6">
@@ -82,8 +65,8 @@ $id = $_GET['id'];
                     <div class="row gy-6">
                         <div-- class="col-md-12">
                             <label for="observaciones" class="form-label">Observaciones <span
-                                    class="text-muted">(Opcional)</span></label>
-                            <textarea class="form-control" rows="2" id="observaciones" name="observaciones" spellcheck="true" ></textarea>
+                                    class="text-muted"></span></label>
+                            <textarea class="form-control" rows="2" id="observaciones" name="observaciones" spellcheck="true" required ></textarea>
                         </div>
                     <br>
                     <br>
@@ -92,12 +75,15 @@ $id = $_GET['id'];
                     <br>
                     <br>
                     <br>
-                <div class="row g-">
-                    <button type="button" class="w-100 btn btn-success btn-lg" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop6">
-                        Enviar solicitud
+                
+                    
+                    <button type="submit" class="w-100 btn btn-success btn-lg" data-bs-toggle="modal" 
+                    data-bs-target="#staticBackdrop6">
+                                Enviar solicitud
                     </button>
-                </div>
+                
+        
+            </form>
                     <!-- Modal -->
                     <div class="modal fade" id="staticBackdrop6" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -124,8 +110,8 @@ $id = $_GET['id'];
                     </div>
 
                     <br>
-                </div>    
-            </form>
+                </div> 
+        
             <div>
                 <h6 class="my-4">Al presionar enviar solictud
                     <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdropterminos">

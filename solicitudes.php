@@ -5,6 +5,8 @@
     require_once('conexiondb.php');
 
 
+
+
         $stmt = $conn->prepare("SELECT solicitud.id, motivo_solicitud.nombre AS nombre_motivo, solicitud.fecha_inicio, estado.nombre AS nombre_estado FROM ((solicitud 
         INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) 
         INNER JOIN estado ON solicitud.id_estado = estado.id)");

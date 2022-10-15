@@ -19,12 +19,11 @@
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
         <div class="">
-            <h5><?= $row->nombre_empleado ?></h5>
-            <h6><?= $row->nombre_cargo ?></h6>
+            <h5>nombre_empleado</h5>
+            <h6>nombre_cargo</h6>
         </div>
 
     </header>
-
 
     <script src="/styles/js/jquery.min.js"></script>
     <script src="styles/js/bootstrap.bundle.js"></script>
