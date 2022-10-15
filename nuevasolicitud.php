@@ -32,20 +32,14 @@
                         <label for="area" class="form-label">Area o Dependencia</label>
                         <input type="text" class="form-control" id="area" name="area"  readonly="readonly">
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <label for="fecha_inicio" class="form-label">Fecha y Hora de salida</label>
                         <input id="fecha_inicio" class="form-control" type="datetime-local" name="fecha_inicio" required/>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <label for="fecha_final" class="form-label">Fecha y Hora de Regreso</label>
                         <input id="fecha_final" class="form-control" type="datetime-local" name="fecha_final" required/>
                     </div>
-
-                    <div class="col-4">
-                        <label for="area" class="form-label">Numero de horas</label>
-                        <input type="text" class="form-control" id="area" name="numero_horas" required>
-                    </div>
-
                     <div class="col-md-6">
                         <label for="motivo_solicitud" class="form-label">Motivo</label>
                         <select class="form-select" name="motivo_solicitud" id="motivo_solicitud" required>
