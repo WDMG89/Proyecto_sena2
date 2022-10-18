@@ -3,29 +3,14 @@ session_start();
     require_once('menu_superior.php');
     require_once('menu_lateral.php');
     require_once('conexiondb.php');
-    $servername = "localhost";
-    $username   = "root";
-    $password   = "";
-    $dbname     = "solicitudausencias";
+    
+    $stmt = $conn->prepare("SELECT solicitud.id, motivo_solicitud.nombre AS nombre_motivo, solicitud.fecha_inicio, estado.id FROM solicitud 
+    INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id 
+    INNER JOIN estado ON solicitud.id_motivo = estado.id) WHERE estado.nombre='EN PROCESO'");
 
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
-        $stmt = $conn->prepare("SELECT solicitud.id, motivo_solicitud.nombre AS nombre_motivo, solicitud.fecha_inicio, estado.nombre FROM ((solicitud INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) INNER JOIN estado ON solicitud.id_estado = estado.id)");
-        $stmt->execute();
-
-        $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
-
-
-    } catch(PDOException $e) {
-        echo "Conexion fallida: " . $e->getMessage();
-    }
+    $rows = $stmt->fetchAll(PDO::FETCH_OBJ)
 
     
-
 ?>
 
     <!-- leyenda inicio-->
@@ -43,7 +28,6 @@ session_start();
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">No. Solicitud</th>
                         <th scope="col">Motivo</th>
                         <th scope="col">Fecha Solicitud</th>
@@ -60,15 +44,15 @@ session_start();
 
 
                     <tr>
-                    <td><?=$row->id?></td>
+                            <td><?=$row->id?></td>
                             <td><?=$row->nombre_motivo?></td>
                             <td><?=$row->fecha_inicio?></td>
-                            <td><?=$row->nombre?></td>
+                            <td><?=$row->estado?></td>
                             <td>
-                            <a href="radicar.php">
+                            <a href="radicar.php?id=<?=$row->id?>
                                 <button type="button" class="btn btn-secondary">Gestionar</button>
                             </a>
-                        </td>
+                            </td>
 
                     </tr>
                         
