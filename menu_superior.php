@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -17,10 +18,10 @@
 
 <body id="body-pd">
     <header class="header" id="header">
-        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i> </div>
         <div class="">
-            <h5>nombre_empleado</h5>
-            <h6>nombre_cargo</h6>
+            <h3 class="text-gray-600 small"><?= $_SESSION['nombre']?></h3>
+            <span class="text-gray-600 small"><?= $_SESSION['cargo']?></span>
         </div>
 
     </header>

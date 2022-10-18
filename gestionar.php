@@ -1,4 +1,5 @@
 <?php
+session_start();
     require_once('menu_superior.php');
     require_once('menu_lateral.php');
     require_once('conexiondb.php');
