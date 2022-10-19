@@ -4,9 +4,18 @@
     require_once('menu_lateral.php');
     require_once('conexiondb.php');
 
+    if (!isset($_GET['filtro'])) {
+        $stmt = $conn-> prepare("SELECT solicitud.id, motivo_solicitud.nombre AS nombre_motivo, solicitud.fecha_inicio, estado.nombre AS nombre_estado FROM usuarios");
+    }  else {
+        $filtro = $_GET['filtro'];
+        $stmt = $conn-> prepare("SELECT solicitud.id, motivo_solicitud.nombre AS nombre_motivo, solicitud.fecha_inicio, estado.nombre AS nombre_estado FROM usuarios WHERE Mostrar = $filtro");
+    }
 
 
+?>
 
+
+<?php
         $stmt = $conn->prepare("SELECT solicitud.id, motivo_solicitud.nombre AS nombre_motivo, solicitud.fecha_inicio, estado.nombre AS nombre_estado FROM ((solicitud 
         INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) 
         INNER JOIN estado ON solicitud.id_estado = estado.id)");
@@ -14,8 +23,6 @@
 
         $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
         
-
-    
 
 ?>
 <br><br><br>
@@ -26,18 +33,23 @@
 
         <div class="d-flex bd-highlight mb-3">
             <div class="p-2 bd-highlight">
+                <form action="" method="get">
                 <label for="inputPassword6" class="col-form-label">Mostrar</label>
             </div>
+
             <div class="p-2 bd-highlight">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Todas</option>
-                    <option value="1">Radicados</option>
-                    <option value="2">En proceso</option>
-                    <option value="3">Autorizados</option>
-                    <option value="3">Negados</option>
-                    <option value="3">Pendientes</option>
+                <select name='filtro'>
+                    <option value="Radicados">Radicados</option>
+                    <option value="En proceso">En proceso</option>
+                    <option value="Autorizados">Autorizados</option>
+                    <option value="Negados">Negados</option>
+                    <option value="Pendientes">Pendientes</option>
                 </select>
+                <button type="submit">Filtrar</button>
             </div>
+        </form>
+
+
             <div class="ms-auto p-2 bd-highlight">
                 <a href="nuevasolicitud.php">
                     <button type="button" class="btn btn-info">Crear Solicitud</button>
