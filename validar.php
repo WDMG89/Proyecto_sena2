@@ -1,6 +1,8 @@
 <?php
+    session_start();
+
     if (empty($_POST['usuario']) or empty($_POST['contrasena'])) {
-        header("location: Index.php");
+        header("location: log_in.php");
     }else {
 
         $usuario    = $_POST['usuario'];
@@ -17,17 +19,29 @@
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
 
-            $stmt = $conn->prepare("SELECT empleado.id, empleado.nombre AS nombre_empleado, cargo.nombre AS nombre_cargo, empleado.id_rango, empleado.super_user FROM (empleado INNER JOIN cargo ON empleado.id_cargo = cargo.id)
-                WHERE usuario = '$usuario' AND contrasena = '$contrasena' ");
+            $stmt = $conn->prepare("SELECT empleado.id, empleado.nombre AS nombre_empleado, cargo.nombre AS nombre_cargo, area.nombre AS nombre_area, empleado.id_rango, empleado.super_user FROM (empleado 
+            INNER JOIN cargo ON empleado.id_cargo = cargo.id
+            INNER JOIN area ON cargo.id_area = area.id)
+            WHERE usuario = '$usuario' AND contrasena = '$contrasena' ");
             $stmt->execute();
+
 
             
 
             if ($stmt->rowCount() > 0) {
                 $row = $stmt->fetch(PDO::FETCH_OBJ);
-                include_once('inicio.php');
+                $_SESSION['id']     = $row->id;
+                $_SESSION['nombre'] = $row->nombre_empleado;
+                $_SESSION['cargo']  = $row->nombre_cargo;
+                $_SESSION['area']   = $row->nombre_area;
+                
+
+
+
+
+                header('location: inicio.php');
             }else {
-                header('location: Index.php');
+                header('location: log_in.php');
             }    
         } catch (PDOException $e) {
             echo "Conexion fallida: " . $e->getMessage();

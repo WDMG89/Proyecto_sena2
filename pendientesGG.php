@@ -1,31 +1,32 @@
 <br><br><br>
 <?php
-require_once('menu_superior.php');
-require_once('menu_lateral.php');
-require_once('conexiondb.php');
+    session_start();
+    require_once('menu_superior.php');
+    require_once('menu_lateral.php');
+    require_once('conexiondb.php');
 
-if (empty($_GET['id'])) {
-} else {
-    $id = $_GET['id'];
+    if (empty($_GET['id'])) {
+    } else {
+        $id = $_GET['id'];
 
-        $stmt = $conn->prepare("SELECT empleado.nombre AS nombre_empleado, area.nombre AS nombre_area, cargo.nombre AS nombre_cargo, solicitud.fecha_inicio, solicitud.fecha_final, solicitud.numero_horas, cargo.salario, motivo_solicitud.nombre AS nombre_motivo, solicitud.observaciones FROM ((((solicitud 
-                            INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) 
-                            INNER JOIN empleado ON solicitud.id_empleado = empleado.id)
-                            INNER JOIN cargo ON empleado.id_cargo = cargo.id)
-                            INNER JOIN area ON cargo.id_area = area.id) WHERE solicitud.id= $id");
-        $stmt->execute();
+            $stmt = $conn->prepare("SELECT empleado.nombre AS nombre_empleado, area.nombre AS nombre_area, cargo.nombre AS nombre_cargo, solicitud.fecha_inicio, solicitud.fecha_final, solicitud.numero_horas, cargo.salario, motivo_solicitud.id AS id_motivo, motivo_solicitud.nombre AS nombre_motivo, solicitud.observaciones FROM ((((solicitud 
+                                INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) 
+                                INNER JOIN empleado ON solicitud.id_empleado = empleado.id)
+                                INNER JOIN cargo ON empleado.id_cargo = cargo.id)
+                                INNER JOIN area ON cargo.id_area = area.id) WHERE solicitud.id= $id");
+            $stmt->execute();
 
-        $row = $stmt->fetch(PDO::FETCH_OBJ);
-    
-}
+            $row = $stmt->fetch(PDO::FETCH_OBJ);
+        
+    }
 
-$numero_horas = $row->numero_horas;
-$salariomes = $row->salario;
-$salariodia = $salariomes / 30;
-$salariohora = $salariodia / 8;
+    $numero_horas = $row->numero_horas;
+    $salariomes = $row->salario;
+    $salariodia = $salariomes / 30;
+    $salariohora = $salariodia / 8;
 
 
-$importe = $salariohora * $numero_horas;
+    $importe = $salariohora * $numero_horas;
 
 ?>
 
@@ -80,11 +81,8 @@ $importe = $salariohora * $numero_horas;
                     <div class="col-md-6">
                         <label for="motivo" class="form-label">Motivo</label>
                         <select class="form-select" id="motivo" required disabled>
-                            <option placeholder="">Salud</option>
-                            <option>Salud</option>
-                            <option>Particular</option>
-                            <option>Calamidad</option>
-                            <option>Otros</option>
+                            <option value="<?=$row->id_motivo?>"><?=$row->nombre_motivo?></option>
+            
                         </select>
                         <div class="invalid-feedback">
                             Please select a valid country.
