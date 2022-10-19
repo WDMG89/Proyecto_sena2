@@ -1,14 +1,14 @@
 <?php
-session_start();
+    session_start();
     require_once('menu_superior.php');
     require_once('menu_lateral.php');
     require_once('conexiondb.php');
     
-    $stmt = $conn->prepare("SELECT solicitud.id, motivo_solicitud.nombre AS nombre_motivo, solicitud.fecha_inicio, estado.id FROM solicitud 
-    INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id 
-    INNER JOIN estado ON solicitud.id_motivo = estado.id) WHERE estado.nombre='EN PROCESO'");
+    $stmt = $conn->prepare("SELECT solicitud.id, motivo_solicitud.nombre AS nombre_motivo, solicitud.fecha_inicio, estado.nombre AS nombre_estado FROM ((solicitud 
+    INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) 
+    INNER JOIN estado ON solicitud.id_estado = estado.id) WHERE estado.id = 2");
 
-    $rows = $stmt->fetchAll(PDO::FETCH_OBJ)
+    $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 
     
 ?>

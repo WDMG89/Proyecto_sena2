@@ -3,11 +3,10 @@
 session_start();
 require_once('menu_superior.php');
 require_once('menu_lateral.php');
-$id_empleado = $_SESSION['id'];
 require_once('conexiondb.php');
 
 
-
+$id_empleado = $_SESSION['id'];
 
 $stmt = $conn->prepare("SELECT solicitud.id, motivo_solicitud.nombre AS nombre_motivo, solicitud.fecha_inicio, estado.nombre AS nombre_estado FROM ((solicitud 
         INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) 

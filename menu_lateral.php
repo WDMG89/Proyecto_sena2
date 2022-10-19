@@ -22,10 +22,6 @@
                         <i class='bx bx-folder nav_icon'></i>
                         <span class="nav_name"> Por gestionar </span>
                     </a>
-                    <a href="#" class="nav_link">
-                        <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
-                        <span class="nav_name"> Radicados </span>
-                    </a>
                 </div>
                 <hr>
                 <div>

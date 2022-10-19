@@ -2,9 +2,10 @@
 
 <?php
 session_start();
+date_default_timezone_set('America/Bogota');
+$id_empleado = $_SESSION['id'];
 require_once('menu_superior.php');
 require_once('menu_lateral.php');
-$id_empleado = $_SESSION['id'];
 require_once('conexiondb.php');
 
 $stmt = $conn->prepare("SELECT empleado.nombre AS nombre_empleado, cargo.nombre AS nombre_cargo, cargo.salario, area.nombre AS nombre_area FROM (empleado 
@@ -49,11 +50,11 @@ $rows2 = $stmt2->fetchAll(PDO::FETCH_OBJ);
                     </div>
                     <div class="col-sm-6">
                         <label for="fecha_inicio" class="form-label">Fecha y Hora de salida</label>
-                        <input id="fecha_inicio" class="form-control" type="datetime-local" name="fecha_inicio" required />
+                        <input id="fecha_inicio" class="form-control" type="datetime-local" min="<?= date('Y-m-d h:i') ?>" name="fecha_inicio" required />
                     </div>
                     <div class="col-sm-6">
                         <label for="fecha_final" class="form-label">Fecha y Hora de Regreso</label>
-                        <input id="fecha_final" class="form-control" type="datetime-local" name="fecha_final" required />
+                        <input id="fecha_final" class="form-control" type="datetime-local" min="<?= date('Y-m-d h:i') ?>" name="fecha_final" required />
                     </div>
                     <div class="col-md-6">
                         <label for="motivo_solicitud" class="form-label">Motivo</label>
