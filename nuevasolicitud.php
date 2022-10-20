@@ -1,5 +1,3 @@
-<br><br><br>
-
 <?php
 session_start();
 date_default_timezone_set('America/Bogota');
@@ -24,7 +22,7 @@ $rows2 = $stmt2->fetchAll(PDO::FETCH_OBJ);
 
 
 ?>
-
+<br><br>
 <br><br><br>
 <!--Container Main start-->
 <div class="height-100 bg-light container">
