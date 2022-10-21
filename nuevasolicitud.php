@@ -104,10 +104,10 @@ $rows2 = $stmt2->fetchAll(PDO::FETCH_OBJ);
                                     </div>
                                     <div class="modal-footer">
                                         <a href="#">
-                                            <button type="subbmit" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop7">Enviar</button>
+                                            <button type="subbmit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop7">Enviar</button>
                                         </a>
-                                        <a href="#">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                        <a href="solicitudes.php">
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                                         </a>
                                     </div>
                                 </div>
