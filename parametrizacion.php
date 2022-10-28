@@ -1,4 +1,3 @@
-<br><br><br>
 <?php
     session_start();
     require_once('menu_superior.php');

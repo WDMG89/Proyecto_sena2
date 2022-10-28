@@ -22,10 +22,6 @@
                         <i class='bx bx-folder nav_icon'></i>
                         <span class="nav_name"> Por gestionar </span>
                     </a>
-                    <a href="#" class="nav_link">
-                        <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
-                        <span class="nav_name"> Radicados </span>
-                    </a>
                 </div>
                 <hr>
                 <div>
@@ -46,7 +42,7 @@
                 </div>
             </div>
             <hr>
-            <a href="#" class="nav_link active">
+            <a href="" class="nav_link active">
                 <i class='bx bx-cog nav_icon'></i>
                 <span class="nav_name"> Consultar Doc </span>
             </a>
@@ -56,6 +52,5 @@
             </a>
         </div>
         <a href="log_out.php" class="nav_link active"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Cerrar sesión</span> </a>
-</div>
-</nav>
+    </nav>    
 </div>

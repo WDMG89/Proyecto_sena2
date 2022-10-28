@@ -9,7 +9,7 @@
     } else {
         $id = $_GET['id'];
 
-            $stmt = $conn->prepare("SELECT empleado.nombre AS nombre_empleado, area.nombre AS nombre_area, cargo.nombre AS nombre_cargo, solicitud.fecha_inicio, solicitud.fecha_final, solicitud.numero_horas, cargo.salario, motivo_solicitud.nombre AS nombre_motivo, solicitud.observaciones FROM ((((solicitud 
+            $stmt = $conn->prepare("SELECT empleado.nombre AS nombre_empleado, area.nombre AS nombre_area, cargo.nombre AS nombre_cargo, solicitud.fecha_inicio, solicitud.fecha_final, solicitud.numero_horas, cargo.salario, motivo_solicitud.id AS id_motivo, motivo_solicitud.nombre AS nombre_motivo, solicitud.observaciones FROM ((((solicitud 
                                 INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) 
                                 INNER JOIN empleado ON solicitud.id_empleado = empleado.id)
                                 INNER JOIN cargo ON empleado.id_cargo = cargo.id)
@@ -81,11 +81,8 @@
                     <div class="col-md-6">
                         <label for="motivo" class="form-label">Motivo</label>
                         <select class="form-select" id="motivo" required disabled>
-                            <option placeholder="">Salud</option>
-                            <option>Salud</option>
-                            <option>Particular</option>
-                            <option>Calamidad</option>
-                            <option>Otros</option>
+                            <option value="<?=$row->id_motivo?>"><?=$row->nombre_motivo?></option>
+            
                         </select>
                         <div class="invalid-feedback">
                             Please select a valid country.

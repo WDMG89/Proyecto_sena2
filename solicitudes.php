@@ -1,9 +1,8 @@
-<br><br><br>
 <?php
 session_start();
+$id_empleado = $_SESSION['id'];
 require_once('menu_superior.php');
 require_once('menu_lateral.php');
-$id_empleado = $_SESSION['id'];
 require_once('conexiondb.php');
 
 
@@ -26,7 +25,7 @@ $rows2 = $stmt2->fetchAll(PDO::FETCH_OBJ);
 
 
 ?>
-<br><br><br>
+<br><br><br><br><br><br>
 <div class="height-100 bg-light container">
     <div class="row">
         <h2>Solicitudes</h2>
@@ -34,7 +33,7 @@ $rows2 = $stmt2->fetchAll(PDO::FETCH_OBJ);
 
     <div class="d-flex bd-highlight mb-3">
         <div class="p-2 bd-highlight">
-            <select class="form-select" aria-label="Default select example" name="mostrar" >
+            <select class="form-select" aria-label="Default select example" name="mostrar">
                 <?php foreach ($rows2 as $row2) { ?>
                     <option value="<?= $row2->id_estado ?>"><?= $row2->nombre_estado2 ?></option>
                 <?php } ?>

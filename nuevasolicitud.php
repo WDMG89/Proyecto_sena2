@@ -1,10 +1,9 @@
-<br><br><br>
-
 <?php
 session_start();
+date_default_timezone_set('America/Bogota');
+$id_empleado = $_SESSION['id'];
 require_once('menu_superior.php');
 require_once('menu_lateral.php');
-$id_empleado = $_SESSION['id'];
 require_once('conexiondb.php');
 
 $stmt = $conn->prepare("SELECT empleado.nombre AS nombre_empleado, cargo.nombre AS nombre_cargo, cargo.salario, area.nombre AS nombre_area FROM (empleado 
@@ -23,7 +22,7 @@ $rows2 = $stmt2->fetchAll(PDO::FETCH_OBJ);
 
 
 ?>
-
+<br><br>
 <br><br><br>
 <!--Container Main start-->
 <div class="height-100 bg-light container">
@@ -49,11 +48,11 @@ $rows2 = $stmt2->fetchAll(PDO::FETCH_OBJ);
                     </div>
                     <div class="col-sm-6">
                         <label for="fecha_inicio" class="form-label">Fecha y Hora de salida</label>
-                        <input id="fecha_inicio" class="form-control" type="datetime-local" name="fecha_inicio" required />
+                        <input id="fecha_inicio" class="form-control" type="datetime-local" min="<?= date('Y-m-d h:i') ?>" name="fecha_inicio" required />
                     </div>
                     <div class="col-sm-6">
                         <label for="fecha_final" class="form-label">Fecha y Hora de Regreso</label>
-                        <input id="fecha_final" class="form-control" type="datetime-local" name="fecha_final" required />
+                        <input id="fecha_final" class="form-control" type="datetime-local" min="<?= date('Y-m-d h:i') ?>" name="fecha_final" required />
                     </div>
                     <div class="col-md-6">
                         <label for="motivo_solicitud" class="form-label">Motivo</label>
@@ -105,10 +104,10 @@ $rows2 = $stmt2->fetchAll(PDO::FETCH_OBJ);
                                     </div>
                                     <div class="modal-footer">
                                         <a href="#">
-                                            <button type="subbmit" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop7">Enviar</button>
+                                            <button type="subbmit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop7">Enviar</button>
                                         </a>
-                                        <a href="#">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                        <a href="solicitudes.php">
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                                         </a>
                                     </div>
                                 </div>

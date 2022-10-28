@@ -110,46 +110,70 @@ SERVICREDITO S.A.</h6>
 </div>
 
 
+<!--Boton cancelar solicitud-->
+    <button type="button" class="w-100 btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdropenviosolictud">
+        Cancelar solicitud
+    </button>
 
-    <hr>
-    <div class="row g-6">
-        <button type="button" class="w-100 btn btn-danger btn-lg" data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop">
-            Cancelar solicitud
-        </button>
-    </div>
-    <br>
-    <div class="row g-">
-        <button type="button" class="w-100 btn btn-success btn-lg" data-bs-toggle="modal"
-            data-bs-target="#staticBackdropverdoc">
-            Modificar solicitud
-        </button>
-    </div>
-
-<!-- Modal -->
-                    <div class="modal fade" id="staticBackdropverdoc" data-bs-backdrop="static" data-bs-keyboard="false"
-                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel"><b>Envio exitoso</b></h5>
-                                    <a href="solicitudes.php">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                    </a>
-                                </div>
-                                <div class="modal-body">
-                                    La solicitud se ha negado exitosamente
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="solicitudes.php">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Cerrar</button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+<!-- Modal alerta cancelar solicitud-->
+    <div class="modal fade" id="staticBackdropenviosolictud" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel"><b>Cancelar solicitud?</b></h5>
+                    <a href="#">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </a>
                     </div>
+                <div class="modal-body">
+                    Para cancelar la solicitud presione "Cancelar" de lo contrario presione "Cerrar".
+                </div>
+                        <div class="modal-footer">
+                            <a href="#">
+                                <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop7">Cancelar</button>
+                                    </a>
+                                    <a href="solicitudes.php">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<br><br>
+
+<!-- boton autorizar -->
+
+    <button type="button" class="w-100 btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Modificar solicitud
+    </button>
+
+
+<!-- Modal autorizar -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel"><b>Modificar solicitud?</b></h5>
+                <a href="verdoc.php">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </a>
+            </div>
+            <div class="modal-body">
+                Para modificar la solicitud seleccione "modificar" de lo contrario seleccione "Cerrar".
+            </div>
+                <div class="modal-footer">
+                    <a href="#">
+                        <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop7">Modificar</button>
+                    </a>
+                    <a href="solicitudes.php">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </a>
+                    </div>
+            </div>
+    </div>
+</div>
+
 <hr>
 <?php 
     include('piedepagina.php');
