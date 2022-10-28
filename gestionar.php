@@ -1,24 +1,29 @@
+
+<br><br><br>
 <?php
-session_start();
+    session_start();
     require_once('menu_superior.php');
     require_once('menu_lateral.php');
     require_once('conexiondb.php');
-    
-    $stmt = $conn->prepare("SELECT solicitud.id, motivo_solicitud.nombre AS nombre_motivo, solicitud.fecha_inicio, estado.id FROM solicitud 
-    INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id 
-    INNER JOIN estado ON solicitud.id_motivo = estado.id) WHERE estado.nombre='EN PROCESO'");
 
-    $rows = $stmt->fetchAll(PDO::FETCH_OBJ)
 
-    
+        $stmt = $conn->prepare("SELECT solicitud.id, motivo_solicitud.nombre AS nombre_motivo, solicitud.fecha_inicio, estado.nombre FROM ((solicitud 
+        INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) 
+        INNER JOIN estado ON solicitud.id_estado = estado.id) WHERE estado.nombre='EN PROCESO'");
+
+        $stmt->execute();
+
+        $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+
 ?>
 
-    <!-- leyenda inicio-->
+<!-- leyenda inicio-->
     <div class="height-100 bg-light container">
         <div class="row">
             <h2>Gestionar</h2>
         </div>
-
+        
         <div class="d-flex bd-highlight mb-3">
             <div class="p-2 bd-highlight">
             </div>
@@ -36,41 +41,31 @@ session_start();
                     </tr>
                 </thead>
                 <tbody>
-
-                <?php
-                    foreach ($rows as $row) {
-                
-                ?>
-
-
-                    <tr>
+                    
+                    <?php
+                        foreach($rows as $row) {
+                    ?>
+                        <tr>
                             <td><?=$row->id?></td>
                             <td><?=$row->nombre_motivo?></td>
                             <td><?=$row->fecha_inicio?></td>
-                            <td><?=$row->estado?></td>
+                            <td><?=$row->nombre?></td>
+                            
                             <td>
-                            <a href="radicar.php?id=<?=$row->id?>
-                                <button type="button" class="btn btn-secondary">Gestionar</button>
-                            </a>
+                                <a href="radicar.php?id=<?=$row->id?>" class="btn btn-secondary">Gestionar</a>
                             </td>
-
-                    </tr>
-                        
-                        <?php   
+                        </tr>
+                    <?php   
                         }
                     ?>
-
-
                 </tbody>
             </table>
         </div>
-
     </div>
-    <hr>
+
+<hr>
 <?php
 
     $conn = null;
-    include('piedepagina.php');
+    require_once('piedepagina.php');
 ?>
-
-    <!--Container Main end-->
