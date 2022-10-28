@@ -7,7 +7,7 @@
         header('location:nuevasolicitud.php');
     } else {
         session_start();
-        $id_estado =      '2';
+        $id_estado          =      '2';
         $fecha_inicio       =     ($_POST['fecha_inicio']);
         $fecha_final        =     ($_POST['fecha_final']);
         $motivo_solicitud   =     ($_POST['motivo_solicitud']);
