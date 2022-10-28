@@ -87,7 +87,6 @@ session_start();
                                         Please select a valid country.
                                     </div>
                                 </div>
-
                             </div>
 
                             <br class="my-4">
@@ -99,12 +98,12 @@ session_start();
                                     <input type="text" class="form-control" id="cc-name"
                                         placeholder="Importante cita con especialista para revisión de examenes y asignación de operación"
                                         required disabled>
-
+                                </div>
                         </form>
                     </div>
                 </div>
-<hr>
-<br>
+        <hr>
+        <br>
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-4">
@@ -188,7 +187,9 @@ session_start();
                                     </div>
                                 </div>
                             </div>
-<br><br><br>
+                        </div>
+                    </div>
+    </div>   
+</div> 
 <hr>
-<br><br><br><br><br><br><br><br><br>
 <?php require_once("piedepagina.php") ?>
