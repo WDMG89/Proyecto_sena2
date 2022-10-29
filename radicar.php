@@ -91,7 +91,6 @@ $row = $stmt->fetch(PDO::FETCH_OBJ);
                                         Please select a valid country.
                                     </div>
                                 </div>
-
                             </div>
 
                             <br class="my-4">
@@ -103,12 +102,12 @@ $row = $stmt->fetch(PDO::FETCH_OBJ);
                                     <input type="text" class="form-control" id="cc-name"
                                         placeholder="Importante cita con especialista para revisión de examenes y asignación de operación"
                                         required disabled>
-
+                                </div>
                         </form>
                     </div>
                 </div>
-<hr>
-<br>
+        <hr>
+        <br>
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-4">
@@ -192,7 +191,9 @@ $row = $stmt->fetch(PDO::FETCH_OBJ);
                                     </div>
                                 </div>
                             </div>
-<br><br><br>
+                        </div>
+                    </div>
+    </div>   
+</div> 
 <hr>
-<br><br><br><br><br><br><br><br><br>
 <?php require_once("piedepagina.php") ?>
