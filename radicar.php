@@ -1,7 +1,15 @@
 <?php
-session_start();
+    session_start();
     require_once('menu_superior.php');
     require_once('menu_lateral.php');
+    require_once('conexiondb.php');
+    
+    $stmt = $conn->prepare("SELECT empleado.nombre AS nombre_empleado, cargo.nombre AS nombre_cargo, cargo.salario, area.nombre AS nombre_area FROM (empleado 
+    INNER JOIN cargo ON empleado.id_cargo = cargo.id 
+    INNER JOIN area ON cargo.id_area = area.id)");
+$stmt->execute();
+
+$row = $stmt->fetch(PDO::FETCH_OBJ);
  
 ?>
 
@@ -14,7 +22,7 @@ session_start();
         <br>
                 <div class="row g-5">
                     <div>
-                        <form class="needs-validation" novalidate>
+                        <form>"needs-validation" novalidate>
                             <div class="row g-3">
                                 <div class="col-sm-12">
                                     <label for="firstName" class="form-label">Nombre </label>
@@ -45,33 +53,29 @@ session_start();
                                     </div>
                                 </div>
 
-                                <div class="col-sm-3">
-                                    <label for="country" class="form-label">Fecha de salida</label>
-                                    <input id="startDate" class="form-control" type="date" required disabled />
-                                </div>
+                                <hr>
+                    <div class="col-sm-6">
+                        <label for="fecha_inicio" class="form-label">Fecha y Hora de salida</label>
+                        <input id="fecha_inicio" class="form-control" type="datetime-local" name="fecha_inicio" value="<?= $row->fecha_inicio ?>" required disabled />
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="fecha_final" class="form-label">Fecha y Hora de Regreso</label>
+                        <input id="fecha_final" class="form-control" type="datetime-local" name="fecha_final" value="<?= $row->fecha_final ?>" required disabled />
+                    </div>
 
-                                <div class="col-sm-3">
-                                    <label for="country" class="form-label">Hora de salida</label>
-                                    <input type="time" class="form-control" id="appt" name="appt" min="09:00"
-                                        max="18:00" required disabled>
-                                </div>
+                    <div class="col-sm-3">
+                        <label for="importe" class="form-label">Valor Importe Permiso</label>
+                        <input type="number" class="form-control" id="importe" name="importe" value="<?= $importe ?>" required disabled>
+                    </div>
 
-                                <div class="col-sm-3">
-                                    <label for="country" class="form-label">Fecha de regreso</label>
-                                    <input id="startDate" class="form-control" type="date" required disabled />
-                                </div>
-
-                                <div class="col-sm-3">
-                                    <label for="country" class="form-label">Hora de regreso</label>
-                                    <input type="time" class="form-control" id="appt" name="appt" min="09:00"
-                                        max="18:00" required disabled>
-                                </div>
-
-                                <div class="col-sm-3">
-                                    <label for="country" class="form-label">Horas de permiso</label>
-                                    <input type="time" class="form-control" id="appt" name="appt" min="09:00"
-                                        max="18:00" required disabled>
-                                </div>
+                                <div class="col-md-6">
+                        <label for="motivo_solicitud" class="form-label">Motivo</label>
+                        <select class="form-select" name="motivo_solicitud" id="motivo_solicitud" required>
+                            <?php foreach ($rows as $row) { ?>
+                                <option value="<?= $row->id_motivo ?>"><?= $row->nombre_motivo ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
 
                                 
                                 <div class="col-md-9">
