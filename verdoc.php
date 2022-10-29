@@ -2,7 +2,35 @@
 session_start();
     require_once('menu_superior.php');
     require_once('menu_lateral.php');
+    require_once('conexiondb.php');
+    if (empty($_GET['id'])) {
+    } else {
+        $id = $_GET['id'];
+
+    $stmt = $conn->prepare("SELECT empleado.nombre AS nombre_empleado, area.nombre AS nombre_area, cargo.nombre AS nombre_cargo, 
+        solicitud.fecha_inicio, solicitud.fecha_final, motivo_solicitud.id AS id_motivo, motivo_solicitud.nombre AS nombre_motivo, solicitud.observaciones FROM ((((solicitud 
+                INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) 
+                INNER JOIN empleado ON solicitud.id_empleado = empleado.id)
+                INNER JOIN cargo ON empleado.id_cargo = cargo.id)
+                INNER JOIN area ON cargo.id_area = area.id) WHERE solicitud.id= $id");
+    $stmt->execute();
+
+            $row = $stmt->fetch(PDO::FETCH_OBJ);
+        
+    }
+
+
 ?>
+
+<tr>
+    <td><?= $row->id ?></td>
+    <td><?= $row->nombre_motivo ?></td>
+    <td><?= $row->fecha_inicio ?></td>
+    <td><?= $row->fecha_final ?></td>
+<td>
+
+
+
 <br>
     <!--Container Main start-->
     <div class="height-100 bg-light container">
@@ -42,28 +70,15 @@ session_start();
                     </div>
                 </div>
 
-                <div class="col-sm-3">
-                    <label for="country" class="form-label">Fecha de salida</label>
-                    <input id="startDate" class="form-control" type="date" required disabled />
-                </div>
-
-                <div class="col-sm-3">
-                    <label for="country" class="form-label">Hora de salida</label>
-                    <input type="time" class="form-control" id="appt" name="appt" min="09:00" max="18:00"
-                        required disabled>
-                </div>
-
-                <div class="col-sm-3">
-                    <label for="country" class="form-label">Fecha de regreso</label>
-                    <input id="startDate" class="form-control" type="date" required disabled />
-                </div>
-
-
-                <div class="col-sm-3">
-                    <label for="country" class="form-label">Hora de regreso</label>
-                    <input type="time" class="form-control" id="appt" name="appt" min="09:00" max="18:00"
-                        required disabled>
-                </div>
+                <hr>
+                    <div class="col-sm-6">
+                        <label for="fecha_inicio" class="form-label">Fecha y Hora de salida</label>
+                        <input id="fecha_inicio" class="form-control" type="datetime-local" name="fecha_inicio" value="<?= $row->fecha_inicio ?>" required disabled />
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="fecha_final" class="form-label">Fecha y Hora de Regreso</label>
+                        <input id="fecha_final" class="form-control" type="datetime-local" name="fecha_final" value="<?= $row->fecha_final ?>" required disabled />
+                    </div>
 
                 <div class="col-md-6">
                     <label for="country" class="form-label">Motivo</label>
@@ -142,14 +157,14 @@ SERVICREDITO S.A.</h6>
 
 <br><br>
 
-<!-- boton autorizar -->
+<!-- boton modificar -->
 
     <button type="button" class="w-100 btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         Modificar solicitud
     </button>
 
 
-<!-- Modal autorizar -->
+<!-- Modal modificar -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
