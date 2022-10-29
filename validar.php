@@ -30,11 +30,11 @@
 
             if ($stmt->rowCount() > 0) {
                 $row = $stmt->fetch(PDO::FETCH_OBJ);
-                $_SESSION['id']     = $row->id;
-                $_SESSION['nombre'] = $row->nombre_empleado;
-                $_SESSION['cargo']  = $row->nombre_cargo;
-                $_SESSION['area']   = $row->nombre_area;
-                
+                $_SESSION['id']         = $row->id;
+                $_SESSION['nombre']     = $row->nombre_empleado;
+                $_SESSION['cargo']      = $row->nombre_cargo;
+                $_SESSION['area']       = $row->nombre_area;
+                $_SESSION['usuario']    = $usuario;
 
 
 

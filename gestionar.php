@@ -6,9 +6,9 @@ require_once('menu_superior.php');
 require_once('menu_lateral.php');
 require_once('conexiondb.php');
 
-$stmt = $conn->prepare("SELECT solicitud.id, motivo_solicitud.nombre AS nombre_motivo, solicitud.fecha_inicio, estado.nombre FROM (solicitud 
-    INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id 
-    INNER JOIN estado ON solicitud.id_motivo = estado.id) WHERE estado.nombre='EN PROCESO'");
+$stmt = $conn->prepare("SELECT solicitud.id, motivo_solicitud.nombre AS nombre_motivo, solicitud.fecha_inicio, estado.nombre AS nombre_estado FROM ((solicitud 
+        INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) 
+        INNER JOIN estado ON solicitud.id_estado = estado.id) WHERE solicitud.id_estado = 2");
 
 $stmt->execute();
 
@@ -48,7 +48,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
                         <td><?= $row->id ?></td>
                         <td><?= $row->nombre_motivo ?></td>
                         <td><?= $row->fecha_inicio ?></td>
-                        <td><?= $row->nombre ?></td>
+                        <td><?= $row->nombre_estado ?></td>
 
                         <td>
                             <a href="radicar.php?id=<?= $row->id ?>" class="btn btn-secondary">Gestionar</a>
