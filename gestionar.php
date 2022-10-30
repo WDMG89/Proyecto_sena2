@@ -2,6 +2,7 @@
 <br><br><br>
 <?php
 session_start();
+if (isset($_SESSION['id'])) {
 require_once('menu_superior.php');
 require_once('menu_lateral.php');
 require_once('conexiondb.php');
@@ -64,7 +65,9 @@ $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 <hr>
 <?php
-
 $conn = null;
 require_once('piedepagina.php');
+} else {
+    header('Location: log_in.php');
+}
 ?>
