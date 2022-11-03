@@ -8,7 +8,7 @@ session_start();
         $id = $_GET['id'];
 
     $stmt = $conn->prepare("SELECT empleado.nombre AS nombre_empleado, area.nombre AS nombre_area, cargo.nombre AS nombre_cargo, 
-        solicitud.fecha_inicio, solicitud.fecha_final, motivo_solicitud.id AS id_motivo, motivo_solicitud.nombre AS nombre_motivo, solicitud.observaciones FROM ((((solicitud 
+        solicitud.fecha_inicio, solicitud.fecha_final, estado.nombre AS nombre_estado, motivo_solicitud.id AS id_motivo, motivo_solicitud.nombre AS nombre_motivo, solicitud.observaciones FROM ((((solicitud 
                 INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) 
                 INNER JOIN empleado ON solicitud.id_empleado = empleado.id)
                 INNER JOIN cargo ON empleado.id_cargo = cargo.id)
@@ -21,6 +21,7 @@ session_start();
 
 
 ?>
+
 
 <tr>
     <td><?= $row->id ?></td>
@@ -131,7 +132,8 @@ SERVICREDITO S.A.</h6>
     </button>
 
 <!-- Modal alerta cancelar solicitud-->
-    <div class="modal fade" id="staticBackdropenviosolictud" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdropenviosolictud" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -144,12 +146,15 @@ SERVICREDITO S.A.</h6>
                     Para cancelar la solicitud presione "Cancelar" de lo contrario presione "Cerrar".
                 </div>
                         <div class="modal-footer">
+                        
                             <a href="#">
-                                <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop7">Cancelar</button>
+                                <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop7">
+                                    Cancelar</button>
                                     </a>
                                     <a href="solicitudes.php">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             </a>
+                            
                 </div>
             </div>
         </div>
