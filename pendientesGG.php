@@ -118,7 +118,7 @@ if (isset($_SESSION['id'])) {
                                 </div>
                                 <div class="modal-footer">
                                     <a href="#">
-                                        <button type="subbmit" class="btn btn-success" data-bs-toggle="modal">Enviar</button>
+                                        <button type="subbmit" name="autorizar" value="1" class="btn btn-success" data-bs-toggle="modal">Enviar</button>
                                     </a>
                                     <a href="#"
                                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
@@ -131,26 +131,29 @@ if (isset($_SESSION['id'])) {
 
                     <!-- boton negar -->
                     <div class="row g-">
-                        <button type="button" class="w-100 btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop6">
+                        <button type="button" class="w-100 btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdropnegar">
                             Negar solicitud
                         </button>
                     </div>
-                    <!-- Modal -->
-                    <div class="modal fade" id="staticBackdrop6" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <!-- Modal negar -->
+                    <div class="modal fade" id="staticBackdropnegar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel"><b>Envio exitoso</b></h5>
-                                    <a href="pendientesG.php">
+                                    <h5 class="modal-title" id="staticBackdropLabel"><b>Negar solicitud ?</b></h5>
+                                    <a href="#">
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </a>
                                 </div>
                                 <div class="modal-body">
-                                    La solicitud se ha negado exitosamente
+                                    Para Negar solicitud presione "Enviar" de lo contrario presione "Cerrar".
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="pendientesG.php">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <a href="#">
+                                        <button type="subbmit" name="negar" value="2" class="btn btn-success" data-bs-toggle="modal">Enviar</button>
+                                    </a>
+                                    <a href="#"
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                                     </a>
                                 </div>
                             </div>
