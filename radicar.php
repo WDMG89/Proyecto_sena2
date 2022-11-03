@@ -1,5 +1,6 @@
 <?php
 session_start();
+if (isset($_SESSION['id'])) {
 date_default_timezone_set('America/Bogota');
 $id_empleado = $_SESSION['id'];
 require_once('menu_superior.php');
@@ -191,4 +192,7 @@ if (empty($_GET['id'])) {
 
 $conn = null;
 require_once('piedepagina.php');
+} else {
+    header('Location: log_in.php');
+}
 ?>

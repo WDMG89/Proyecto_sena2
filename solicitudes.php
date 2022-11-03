@@ -1,5 +1,6 @@
 <?php
 session_start();
+if (isset($_SESSION['id'])) {
 $id_empleado = $_SESSION['id'];
 require_once('menu_superior.php');
 require_once('menu_lateral.php');
@@ -92,4 +93,7 @@ $rows2 = $stmt2->fetchAll(PDO::FETCH_OBJ);
 <?php
 $conn = null;
 include('piedepagina.php');
+} else {
+    header('Location: log_in.php');
+}
 ?>

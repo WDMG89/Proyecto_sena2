@@ -35,6 +35,7 @@
                 $_SESSION['cargo']      = $row->nombre_cargo;
                 $_SESSION['area']       = $row->nombre_area;
                 $_SESSION['usuario']    = $usuario;
+                $_SESSION['rango']      = $row->id_rango;
 
 
 

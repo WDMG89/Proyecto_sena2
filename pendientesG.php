@@ -1,29 +1,28 @@
-
-<br><br><br>
 <?php
-    session_start();
+session_start();
+if (isset($_SESSION['id'])) {
     require_once('menu_superior.php');
     require_once('menu_lateral.php');
     require_once('conexiondb.php');
 
 
-        $stmt = $conn->prepare("SELECT solicitud.id, motivo_solicitud.nombre AS nombre_motivo, solicitud.fecha_inicio, estado.nombre FROM ((solicitud 
+    $stmt = $conn->prepare("SELECT solicitud.id, motivo_solicitud.nombre AS nombre_motivo, solicitud.fecha_inicio, estado.nombre FROM ((solicitud 
         INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) 
         INNER JOIN estado ON solicitud.id_estado = estado.id) WHERE estado.nombre='RADICADO'");
 
-        $stmt->execute();
+    $stmt->execute();
 
-        $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
+    $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 
 ?>
-
-<!-- leyenda inicio-->
+<br><br><br>
+    <!-- leyenda inicio-->
     <div class="height-100 bg-light container">
         <div class="row">
-            <h2>Gestion Admin/Pendientes</h2>
+            <h2>Pendientes</h2>
         </div>
-        
+
         <div class="d-flex bd-highlight mb-3">
             <div class="p-2 bd-highlight">
             </div>
@@ -41,31 +40,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                     <?php
-                        foreach($rows as $row) {
+                    foreach ($rows as $row) {
                     ?>
                         <tr>
-                            <td><?=$row->id?></td>
-                            <td><?=$row->nombre_motivo?></td>
-                            <td><?=$row->fecha_inicio?></td>
-                            <td><?=$row->nombre?></td>
-                            
+                            <td><?= $row->id ?></td>
+                            <td><?= $row->nombre_motivo ?></td>
+                            <td><?= $row->fecha_inicio ?></td>
+                            <td><?= $row->nombre ?></td>
+
                             <td>
-                                <a href="pendientesGG.php?id=<?=$row->id?>" class="btn btn-secondary">Gestionar</a>
+                                <a href="pendientesGG.php?id=<?= $row->id ?>" class="btn btn-secondary">Gestionar</a>
                             </td>
                         </tr>
-                    <?php   
-                        }
+                    <?php
+                    }
                     ?>
                 </tbody>
             </table>
         </div>
     </div>
 
-<hr>
+    <hr>
 <?php
 
     $conn = null;
     require_once('piedepagina.php');
+} else {
+    header('Location: log_in.php');
+}
 ?>
