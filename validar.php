@@ -36,9 +36,6 @@
                 $_SESSION['area']       = $row->nombre_area;
                 $_SESSION['usuario']    = $usuario;
 
-
-
-
                 header('location: inicio.php');
             }else {
                 header('location: log_in.php');
