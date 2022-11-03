@@ -10,7 +10,7 @@ if (empty($_GET['id'])) {
     $id = $_GET['id'];
 
     $stmt = $conn->prepare("SELECT empleado.nombre AS nombre_empleado, area.nombre AS nombre_area, cargo.nombre AS nombre_cargo, 
-        solicitud.fecha_inicio, solicitud.fecha_final, motivo_solicitud.id AS id_motivo, motivo_solicitud.nombre AS nombre_motivo, solicitud.observaciones FROM ((((solicitud 
+        solicitud.fecha_inicio, solicitud.fecha_final, estado.nombre AS nombre_estado, motivo_solicitud.id AS id_motivo, motivo_solicitud.nombre AS nombre_motivo, solicitud.observaciones FROM ((((solicitud 
                 INNER JOIN motivo_solicitud ON solicitud.id_motivo = motivo_solicitud.id) 
                 INNER JOIN empleado ON solicitud.id_empleado = empleado.id)
                 INNER JOIN cargo ON empleado.id_cargo = cargo.id)
@@ -22,6 +22,7 @@ if (empty($_GET['id'])) {
 
 
 ?>
+
 
 <tr>
     <td><?= $row->id ?></td>
