@@ -2,7 +2,7 @@
 
     if ( isset($_POST['autorizar'])) {
 
-        session_start();
+
         date_default_timezone_set('America/Bogota');
         $usuario_adm        =     $_SESSION['usuario'];
         $fecha_autorizado   =     date('Y-m-d h:i');
@@ -36,7 +36,7 @@
     }
         if ( isset($_POST['negar'])) {
 
-        session_start();
+
         date_default_timezone_set('America/Bogota');
         $usuario_adm        =     $_SESSION['usuario'];
         $fecha_negado   =     date('Y-m-d h:i');

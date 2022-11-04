@@ -19,7 +19,7 @@
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
 
-            $stmt = $conn->prepare("SELECT empleado.id, empleado.nombre AS nombre_empleado, cargo.nombre AS nombre_cargo, area.nombre AS nombre_area, empleado.id_rango, empleado.super_user FROM (empleado 
+            $stmt = $conn->prepare("SELECT empleado.id, empleado.nombre AS nombre_empleado, cargo.nombre AS nombre_cargo, area.nombre AS nombre_area, empleado.id_rango FROM (empleado 
             INNER JOIN cargo ON empleado.id_cargo = cargo.id
             INNER JOIN area ON cargo.id_area = area.id)
             WHERE usuario = '$usuario' AND contrasena = '$contrasena' ");

@@ -27,8 +27,8 @@
     </header>
 
     <script src="/styles/js/jquery.min.js"></script>
-    <script src="styles/js/bootstrap.bundle.js"></script>
-    <script src="styles/js/sidebar.js"></script>
+    <script src="/styles/js/bootstrap.bundle.js"></script>
+    <script src="/styles/js/sidebar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 
 
