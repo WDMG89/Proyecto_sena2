@@ -80,7 +80,7 @@ $rows2 = $stmt2->fetchAll(PDO::FETCH_OBJ);
                     <br>
                     <br>
 
-                    < <!-- boton enviar -->
+                    <!-- boton enviar -->
                         <br>
                         <br>
                         <br>
