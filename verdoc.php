@@ -99,6 +99,7 @@ if($row->id_estado == 1) {
                             <textarea class="form-control" rows="2" id="observaciones" name="observaciones"><?= $row->observaciones ?></textarea>
                         </div>
                     </div>
+                    
                     <hr>
 
                     <!-- boton cancelar -->
@@ -383,7 +384,7 @@ if($row->id_estado == 1) {
 <br><br><br>
     <div class="height-100 bg-light container">
         <div class="row">
-            <h2>Solicitud Autrizada</h2>
+            <h2>Solicitud Autorizada</h2>
         </div>
 
 
@@ -440,6 +441,9 @@ if($row->id_estado == 1) {
                             <textarea class="form-control" rows="2" id="observaciones" name="observaciones" required disabled><?= $row->observaciones ?></textarea>
                         </div>
                     </div>
+            </div>
+        </div>
+    </div>
                     <hr>
                 
 
