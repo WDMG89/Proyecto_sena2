@@ -9,7 +9,7 @@
         session_start();
         date_default_timezone_set('America/Bogota');
         $usuario_je_d       =     $_SESSION['usuario'];
-        $fecha_radicado     =     date('Y-m-d h:i');
+        $fecha_radicado     =     date('Y-m-d H:i');
         $id_estado          =     '1';
         $observaciones      =     ($_POST['observaciones']);
         $id_solicitud       =     $_SESSION['id_soli'];

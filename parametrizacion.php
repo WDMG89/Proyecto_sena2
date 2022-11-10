@@ -118,7 +118,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <a>
-                                                        <button type="subbmit" class="btn btn-success">Modificar</button>
+                                                        <button type="subbmit" name="modificar" value="5" class="btn btn-success">Modificar</button>
                                                     </a>
                                                     <a href="parametrizacion.php">
                                                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>

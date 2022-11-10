@@ -5,7 +5,7 @@
 
         date_default_timezone_set('America/Bogota');
         $usuario_adm        =     $_SESSION['usuario'];
-        $fecha_autorizado   =     date('Y-m-d h:i');
+        $fecha_autorizado   =     date('Y-m-d H:i');
         $id_estado          =     '4';
         $observaciones      =     ($_REQUEST['observaciones']);
         $v_importe          =     ($_REQUEST['importe']); 
@@ -39,7 +39,7 @@
 
         date_default_timezone_set('America/Bogota');
         $usuario_adm        =     $_SESSION['usuario'];
-        $fecha_negado   =     date('Y-m-d h:i');
+        $fecha_negado   =     date('Y-m-d H:i');
         $id_estado          =     '5';
         $observaciones      =     ($_REQUEST['observaciones']);
         $v_importe          =     ($_REQUEST['importe']); 

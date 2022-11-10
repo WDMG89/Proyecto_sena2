@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <hr>
-                <a href="" class="nav_link active">
+                <a href="consultar_doc.php" class="nav_link active">
                     <i class='bx bx-cog nav_icon'></i>
                     <span class="nav_name"> Consultar Doc </span>
                 </a>

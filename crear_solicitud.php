@@ -8,7 +8,7 @@
     } else {
         session_start();
         date_default_timezone_set('America/Bogota');
-        $fecha_registro     =     date('Y-m-d h:i');
+        $fecha_registro     =     date('Y-m-d H:i');
         $id_estado          =      '2';
         $fecha_inicio       =     ($_POST['fecha_inicio']);
         $fecha_final        =     ($_POST['fecha_final']);

@@ -64,11 +64,11 @@ if (isset($_SESSION['id'])) {
                         <hr>
                         <div class="col-sm-6">
                             <label for="fecha_inicio" class="form-label">Fecha y Hora de salida</label>
-                            <input id="fecha_inicio" class="form-control" type="datetime-local" name="fecha_inicio" value="<?= $row->fecha_inicio ?>" required disabled />
+                            <input id="fecha_inicio" class="form-control" type="datetime-local" name="fecha_inicio" min="<?= date('Y-m-d h:i') ?>" value="<?= $row->fecha_inicio ?>" required disabled />
                         </div>
                         <div class="col-sm-6">
                             <label for="fecha_final" class="form-label">Fecha y Hora de Regreso</label>
-                            <input id="fecha_final" class="form-control" type="datetime-local" name="fecha_final" value="<?= $row->fecha_final ?>" required disabled />
+                            <input id="fecha_final" class="form-control" type="datetime-local" name="fecha_final" min="<?= date('Y-m-d h:i') ?>" value="<?= $row->fecha_final ?>" required disabled />
                         </div>
 
                         <div class="col-sm-3">
@@ -120,8 +120,7 @@ if (isset($_SESSION['id'])) {
                                     <a href="#">
                                         <button type="subbmit" name="autorizar" value="1" class="btn btn-success" data-bs-toggle="modal">Enviar</button>
                                     </a>
-                                    <a href="#"
-                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                                    <a href="#" <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                                     </a>
                                 </div>
                             </div>
@@ -152,8 +151,7 @@ if (isset($_SESSION['id'])) {
                                     <a href="#">
                                         <button type="subbmit" name="negar" value="2" class="btn btn-success" data-bs-toggle="modal">Enviar</button>
                                     </a>
-                                    <a href="#"
-                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                                    <a href="#" <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                                     </a>
                                 </div>
                             </div>
