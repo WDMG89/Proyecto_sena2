@@ -35,10 +35,6 @@
                             <i class='bx bx-spreadsheet nav_icon'></i>
                             <span class="nav_name"> Pendientes </span>
                         </a>
-                        <a href="#" class="nav_link">
-                            <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
-                            <span class="nav_name"> Informes </span>
-                        </a>
                     </div>
                 </div>
                 <hr>
