@@ -2,19 +2,22 @@
 session_start();
 if (isset($_SESSION['id'])) {
     header('Location: inicio.php');
-} else {?>
+} else { ?>
+    <!DOCTYPE html>
+    <html lang="es">
+
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300i,400,700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
         <title>Sistema Gestion administrativa
         </title>
         <style>
             body {
                 padding: 0;
                 margin: 0;
-                height: 100vh;
+                height: 94vh;
                 font-family: "Nunito Sans";
             }
 
@@ -97,6 +100,6 @@ if (isset($_SESSION['id'])) {
 
     <br>
     <br>
-<?php 
+<?php
 }
 ?>
